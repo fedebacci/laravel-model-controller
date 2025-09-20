@@ -24,33 +24,13 @@
                 <div class="row g-3">
                     @foreach ($movies as $movie)
                         <div class="col-6 col-sm-4 col-md-3">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        {{ $movie->title }}
-                                    </h5>
-                                    <h6 class="mb-3">
-                                        <em>
-                                            {{ $movie->original_title }}
-                                        </em>
-                                    </h6>
-                                    <p class="card-text mb-0">
-                                        {{ $movie->date }}
-                                    </p>
-                                    <p class="card-text mb-0">
-                                        <strong>
-                                            <small>
-                                                {{ $movie->nationality }}
-                                            </small>
-                                        </strong>
-                                    </p>
-                                    <p class="card-text mb-0">
-                                        <small>
-                                            Vote: {{ $movie->vote }}
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
+                            <x-movie-card :movie="$movie">
+                                <x-slot:title>{{ $movie["title"] }}</x-slot>
+                                <x-slot:original_title>{{ $movie["original_title"] }}</x-slot>
+                                <x-slot:date>{{ $movie["date"] }}</x-slot>
+                                <x-slot:nationality>{{ $movie["nationality"] }}</x-slot>
+                                <x-slot:vote>{{ $movie["vote"] }}</x-slot>
+                            </x-movie-card>
                         </div>
                     @endforeach
                 </div>
